@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="feedback.css"> -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: aliceblue;
+        }
+        .header {
+            height: 15vh;
+            background-color: #333;
+            display: flex;
+            justify-content: flex-start;
+            /* margin-bottom: 16px; */
+        }
+
+        .header-logo>img {
+            width: 70px;
+        }
+
+        #police-logo {
+            margin-left: 20px;
+        }
+
+        .header-text {
+            color: #f5f5f5;
+        }
+
+        .header-text>h1 {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .header-text>p {
+            padding-top: 10px;
+        }
+
+        /* Nav bar */
+        .nav-bar {
+            margin-top: 70px;
+            margin-left: auto;
+            /* align-self: last baseline; */
+            height: 30px;
+            color: #f5f5f5;
+        }
+
+        .nav-bar>a {
+            font-size: 20px;
+            text-decoration: none;
+            margin: 10px;
+            color: #f5f5f5;
+        }
+
+        small {
+            color: red;
+        }
+
+        p {
+            margin: 10px;
+            padding: 10px;
+        }
+
+        h1 {
+            width: 95%;
+            margin: auto;
+        }
+
+        span {
+            color: red;
+        }
+
+        /* Main Container */
+        fieldset {
+            width: 95%;
+            margin: auto;
+            border-radius: 20px;
+        }
+
+        form {
+            width: 95%;
+            margin: auto;
+        }
+
+        /* Container 1 and 3 */
+        .grid-container1,
+        .grid-container3 {
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+
+        /* Container 2 */
+        .grid-container2 {
+            display: grid;
+            grid-template-columns: 33.33% 66.67%;
+        }
+
+        /* Container  4 */
+        .grid-container4 {
+            display: grid;
+            grid-template-columns: auto;
+        }
+
+        /* Container 5 */
+        .grid-container5 {
+            display: grid;
+            grid-template-columns: auto;
+        }
+
+        .grid-container5>.grid-item {
+            width: 32%;
+        }
+
+        /* Container 6 */
+        .grid-container6 {
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: center;
+        }
+
+        /* Address */
+        #address {
+            display: block;
+            width: 96.25%;
+        }
+
+        /* Container of label and inputs */
+        .grid-item {
+            margin: 10px;
+            padding: 5px;
+        }
+
+        /* Some Element which needed special CSS */
+        input {
+            width: 92%;
+            height: 35px;
+        }
+
+        #gender,
+        #selectState,
+        #selectDistrict,
+        #selectPoliceStation {
+            width: 93%;
+            height: 43px;
+        }
+
+        /* Feedback */
+        #feedback {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Captcha Code */
+        #captchaCode {
+            text-align: center;
+            text-decoration: line-through;
+            font-weight: bold;
+            font-size: 20px;
+            display: inline;
+        }
+
+        #refreshButton {
+            display: inline;
+        }
+
+        /* Submit and Reset Button */
+        #submit,
+        #reset {
+            background-color: #333;
+            color: white;
+            border-radius: 50px;
+            height: 60px;
+            font-size: 20px;
+            width: 150px;
+        }
+
+        /* STAR RATE US */
+        #text {
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            flex-direction: column;
+        }
+
+        .container .star-width input {
+            display: none;
+        }
+
+        .star-width label {
+            color: black;
+            font-size: 40px;
+            padding: 5px;
+            float: right;
+        }
+
+        input:not(checked)~label:hover,
+        input:not(checked)~label:hover~label {
+            color: yellow;
+        }
+
+        input:checked~label {
+            color: yellow;
+        }
+
+        input#rate-5:checked~label {
+            color: yellow;
+            text-shadow: 0 0 5px gray;
+        }
+
+        #rate-1:checked~header::before {
+            content: "Very Bad😡";
+        }
+
+        #rate-2:checked~header::before {
+            content: "Bad🙁";
+        }
+
+        #rate-3:checked~header::before {
+            content: "Good😇";
+        }
+
+        #rate-4:checked~header::before {
+            content: "I like It!😀";
+        }
+
+        #rate-5:checked~header::before {
+            content: "Excellence😍";
+        }
+
+        .container form {
+            display: none;
+        }
+
+        input:checked~form {
+            display: block;
+        }
+
+        .header {
+            height: 15vh;
+            background-color: #333;
+            display: flex;
+            justify-content: flex-start;
+            /* margin-bottom: 16px; */
+        }
+
+        .header-logo>img {
+            width: 70px;
+        }
+
+        #police-logo {
+            margin-left: 20px;
+        }
+
+        .header-text {
+            color: #f5f5f5;
+        }
+
+        .header-text>h1 {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .header-text>p {
+            padding-top: 10px;
+        }
+
+        /* Nav bar */
+        .nav-bar {
+            margin-top: 70px;
+            margin-left: auto;
+            /* align-self: last baseline; */
+            height: 30px;
+            color: #f5f5f5;
+        }
+
+        .nav-bar>a {
+            font-size: 20px;
+            text-decoration: none;
+            margin: 10px;
+            color: #f5f5f5;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width : 480px) {
+            form {
+                width: 90%;
+            }
+
+            .grid-container1,
+            .grid-container2,
+            .grid-container3,
+            .grid-container4,
+            .grid-container5 {
+                grid-template-columns: auto;
+            }
+
+            .grid-item {
+                margin: 10px;
+            }
+
+            textarea {
+                height: 40px;
+                width: 90%;
+            }
+
+            #address {
+                width: 92%;
+            }
+
+            #feedback {
+                display: inline;
+            }
+
+            #captchaCode {
+                width: 90%;
+            }
+        }
+        .Footer {
+            display: flex; 
+            background-color: #333;
+            color: #fff; 
+            padding: 20px; 
+            align-items: center;
+            padding-left:35%;
+            font-weight: bold;
+          } 
+          .footer a {
+            
+            text-decoration: none; 
+            color: #fff; 
+          }
+          
+          .footer a:hover {
+            text-decoration: underline; 
+          }
+          @media screen and (min-width : 480px) {
+
+            /* Header */
+            .header {
+                height: 15vh;
+            }
+
+            .header-text>h1 {
+                font-size: 26px;
+                margin-top: 20px;
+                margin-left: 10px;
+            }
+
+            .header-text>p {
+                margin-top: -5px;
+                margin-left: 10px;
+            }
+
+            /* Nav bar */
+            .nav-bar {
+                height: 50px;
+                /* margin-left: 10px; */
+            }
+
+            .nav-bar>span {
+                color: #333;
+            }
+        }
+    </style>
+</head>
+
+<body onload="generateCaptcha()">
+
+    <div class="header">
+        <div class="header-logo">
+            <img src="/images/GUJARAT POLICE LOGO PNG.png" alt="Satyamev Jayate" class="logo" id="police-logo">
+        </div>
+        <div class="header-text">
+            <h1>Gujarat Police</h1>
+            <p>Government of Gujarat</p>
+        </div>
+        <div class="nav-bar">
+            <a href="/">Feedback form</a> |
+            <a href="http://localhost:3000/contact_us">Contact us</a>
+        </div>
+    </div>
+    <h1>Gujarat Police Feedback Form</h1>
+    <fieldset>
+        <legend>
+            <p>All field marked with <span>*</span> are mandatory</p>
+        </legend>
+        <form name="myform" onsubmit="return validate()" method="post" action="/">
+            <!-- Container 1  Names , Mail , Gender , Age -->
+            <div class="grid-container1">
+                <!-- First Name -->
+                <div class="grid-item">
+                    <label for="fname">First name <span>*</span>
+                        <input type="text" id="fname" name="firstname" placeholder="Enter First name"><br>
+                        <small id="Fname"></small>
+                    </label>
+                </div>
+                <!-- Middle Name -->
+                <div class="grid-item">
+                    <label for="mname">Middle name:
+                        <input type="text" id="mname" name="middlename" placeholder="Enter Middle name">
+                    </label>
+                </div>
+                <!-- Last Name -->
+                <div class="grid-item">
+                    <label for="lname">Last name <span>*</span>
+                        <input type="text" id="lname" name="lastname" placeholder="Enter Last name"><br>
+                        <small id="Lname"></small>
+                    </label>
+                </div>
+                <!-- Mail -->
+                <div class="grid-item">
+                    <label for="email">Email <span>*</span>
+                        <input type="email" id="email" name="email" placeholder="Enter Email"><br>
+                        <small id="Email"></small>
+                    </label>
+                </div>
+                <!-- Gender -->
+                <div class="grid-item">
+                    <label for="gender" id="gender">Gender <span>*</span>
+                        <select id="gender" name="gender">
+                            <option value="">-----Select Gender-----</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select><br>
+                        <small id="Gender"></small>
+                    </label>
+                </div>
+                <!-- Age -->
+                <div class="grid-item">
+                    <label for="age">Age <span>*</span>
+                        <input type="number" id="age" name="age" placeholder="Enter Age"><br>
+                        <small id="Age"></small>
+                    </label>
+                </div>
+            </div>
+            <!-- Container 2 Address , Number-->
+            <div class="grid-container2">
+
+                <!-- Contact Number -->
+                <div class="grid-item">
+                    <label for="contact-no">Contact no <span>*</span>
+                        <input type="tel" id="contact-no" name="contactno" placeholder="Enter Contact number"><br>
+                        <small id="Contact-no"></small>
+                    </label>
+                </div>
+                <!-- Address -->
+                <div class="grid-item">
+                    <label for="address" id="addressLabel">Address:
+                        <input type="text" id="address" name="address" placeholder="Enter your Address">
+                    </label>
+                </div>
+            </div>
+            <!-- Container 3 State , District Police Station-->
+            <div class="grid-container3">
+                <!-- State -->
+                <div class="grid-item">
+                    <label for="selectState">State <span>*</span>
+                        <select id="selectState" name="selectState">
+                            <option value="">-----Select State-----</option>
+                            <option value="Gujarat">Gujarat</option>
+                        </select><br>
+                        <small id="SELECTSTATE"></small>
+                    </label>
+                </div>
+                <!-- District -->
+                <div class="grid-item">
+                    <label for="selectDistrict">District <span>*</span>
+                        <select id="selectDistrict" name="selectDistrict">
+                            <option value="">-----Select District-----</option>
+                        </select><br>
+                        <small id="SELECTDISTRICT"></small>
+                    </label>
+                </div>
+                <!-- Police Station -->
+                <div class="grid-item">
+                    <label for="selectPoliceStation">Police Station <span>*</span>
+                        <select id="selectPoliceStation" name="selectPoliceStation">
+                            <option value="">-----Select Police Station-----</option>
+                        </select><br>
+                        <small id="SELECTPOLICE"></small>
+                        <script>
+                            var selectState = document.getElementById("selectState");
+                            var selectDistrict = document.getElementById("selectDistrict");
+                            var selectPoliceStation = document.getElementById("selectPoliceStation");
+                            let SELECTSTATE = document.getElementById('SELECTSTATE');
+                            let SELECTDISTRICT = document.getElementById('SELECTDISTRICT');
+                            let SELECTPOLICE = document.getElementById('SELECTPOLICE');
+                            let gender = document.getElementById('gender1');
+                            let Gender = document.getElementById('Gender');
+
+
+
+                            var GUJARAT_DISTRICTS = [
+
+                                "AHMEDABAD_CITY",
+                                "AHMEDABAD_RURAL",
+                                "AMRELI",
+                                "ANAND",
+                                "BANASKANTHA",
+                                "BHARUCH",
+                                "BHAVNAGAR",
+                                "DAHOD",
+                                "DANGS",
+                                "GANDHINAGAR",
+                                "JAMNAGAR",
+                                "JUNAGADH",
+                                "KHEDA",
+                                "KUTCHH_BHUJ",
+                                "MAHESANA",
+                                "NARMADA",
+                                "NAVSARI",
+                                "PANCHMAHAL",
+                                "PATAN",
+                                "PORBANDAR",
+                                "RAJKOT_CITY",
+                                "RAJKOT_RURAL",
+                                "SABARKANTHA",
+                                "SURAT_CITY",
+                                "SURAT_RURAL",
+                                "SURENDRANAGAR",
+                                "TAPI",
+                                "VADODARA_CITY",
+                                "VADODARA_RURAL",
+                                "VALSAD"
+                            ];
+                            var DISTRICT_POLICE_STATIONS = {
+
+
+                                'AHMEDABAD_CITY': ['ALLICEBRIDGE POLICE STATION, OPP.TOWN HALL, AHMEDABAD',
+                                    'CRIME BRANCH, GAYAKWADI HAVELI, GAYAKWAD', 'GAYAKWAD POLICE STATION, JAMALPUR', 'GHATLODIYA POLICE STATION, OPP.AAKASH GANGA APT.,SOLA ROAD', 'GOMTIPUR POLICE STATION, PATEL MILL PASE, SHITAL CINEMA SAME', 'GUJARAT UNI. POLICE STATION, BEHIND PRL', 'ISANPUR POLICE STATION, OPP.MILLATNAGAR', 'RAKHIAL POLICE STATION, OPP.MONOGRAM MILL', 'RAMOL POLICE STATION', 'SABARMATI POLICE STATION, RAMNAGAR', 'SARDARNAGAR POLICE STATION, NEAR AIRPORT, SARDARNAGAR', 'SATELLITE POLICE STATION, RAMDEVNAGAR CHAR RASTA', 'SHAHIBAG POLICE STATION, NEAR SHAHIBAG UNDERBIDGE', 'Shapur Police Station, Shapurt Bahi Station,Ahmedabad', 'Shar Kotda Police Station, Sarspur , Ahmedabad', 'Sola Police Station, Sola Civil Hospital, Sola ,Ahmedabad', 'Vajalpur Police Station, Nr APMC Market, Paldi-Sarkhej Road.', 'Vastrapur Police Station, Nr, Sal Hospital, Drivion Road, Vastrapur Road', 'Vatava GIDC Police station, Nr Bobay Conducter .', 'Vatva Polistation, Nr Golden Tokis ,Vatava Ahmedabad', 'amraiwadi police station, amraiwadi gam', 'bapunagar police station, opp.ganesh mandir, lalbahadur shastri road,', 'chandkheda police station, i.o.c. road', 'danilimbda police station, near babunagar,', 'dariyapur police station, prem darwaja,', 'kagdapith police station, near newcloth marcket, raipur darwaja', 'kalupur police station, dhanasuthar char rasta, relief road', 'karanj police station, karanj bhavan, laldarwaja', 'khadiya police station, near raipur darawaja,', 'madhavpura police station, madhavpuragam', 'mahila police station, juna karanj, bhadra', 'maninagar police station, rambag char rasta', 'meghaninagar police station,', 'naranpura police station, near akharbarnagar underbridge', 'naroda police station, naroda highway', 'navrangpura police staion, opp.railway fatak', 'odhav police station,', 'sola police station, sola civil hospital, sola'],
+
+
+                                'AHMEDABAD_RURAL': ['aslali police station, aslali', 'bagodara police station, bagodara.', 'barvala police station, barval.', 'bavla police station, bavla-dholka road, near railway fatak, bavla.', 'cpi office, tower chowk pase, dhandhuka.', 'dholera police station, dholera.', 'dholka police station, mamlatdar kacheri compound, dholka.', 'kanbha police station, kathlal road, kanbha.', 'koth police station, near post office, koth.', 'mandal police station, mandal.', 'ranpur police station, ranpur', 'sanand police station, viramgam hihgway road, near mamlatdar ni kacheri', 'sarkhej police station, near amts bus stand, sarkhej', 'viramgam police station, near tower,viramgam.', 'viramgam rural police station, near tower,viramgam', 'vithalapur police station, vithalapur.'],
+
+
+
+                                'AMRELI': ['Amreli Taluka Police Station, Near Bus Stop, Amreli',
+                                    'Babara Police Station, Distt. Amreli',
+                                    'Bagashra Police Station, Distt. Amreli',
+                                    'Chalala Police Station, Distt. Amreli',
+                                    'City Police Station, Near Nagnatha Circle, Amreli',
+                                    'Damnagar Police Station, Distt. Amreli',
+                                    'Dhari Police Station, Distt. Amreli',
+                                    'Jafarabad Police Station, Distt. Amreli',
+                                    'Khambha Police Station, Distt. Amreli',
+                                    'Lathi Police Station, Distt. Amreli',
+                                    'Liliya Police Station, Distt. Amreli',
+                                    'Marin (Pipavav) Police Station, Amreli',
+                                    'Nageshri Police Station, Ta. Jafarabad, Distt, Amreli',
+                                    'Rajula Police Station, Rajula, Ta. Rajula, Distt, Amreli',
+                                    'Savarkundala Rural Police Station, Ta. Savarkundala, Distt. Amreli',
+                                    'Savarkundala Town Police Station, Savarkundala',
+                                    'Vadiya Police Station, Distt. Amreli'],
+
+
+                                'ANAND': ['Anklav Police Station, Anklav.',
+                                    'Anand Mahila Police Station, Station Road, Anand.',
+                                    'Anand Rural Police Station, Aemari Hospital Ni Same, Station Road, Anand.',
+                                    'Bhadaran Police Station, Bhadaran.',
+                                    'Borsad Police Station, JD Patel High School Same, Borsad Chokadi, Borsad.',
+                                    'Borsad Police Station, JD Patel School Same, Vasad Chokadi, Borsad.',
+                                    'Khambhat Police Station, Opp. Nagar Plaika, Tran Darawaja, Khambhat.',
+                                    'Khambolaj Police Station, Khambolaj.',
+                                    'Mehlava Police Station, Mehlava.',
+                                    'Petlad Rural Police Station, Court Compound, Station Road, Petlad.',
+                                    'Petlad Rural Police Station, Court Compound, Station Road, Petlad.',
+                                    'Petlad Town Police Station, Court Compound, Station Road, Petlad.',
+                                    'Sojitra Police Station, Near Panchayat Kacheri, Sojitra, Anand.',
+                                    'Station Road, Anand.',
+                                    'Tarapur Police Station, Opp. Dairy, Tarapur.',
+                                    'Umreth Police Station, Umreth.',
+                                    'Vasad Police Station, Vasad.',
+                                    'Vidhanagar Police Station, Vidhanagar.',
+                                    'Virsad Police Station, Virsad.'],
+
+
+                                'BANASKANTHA': ['Ambaji Police Station, Ta. Danta',
+                                    'Amirgadh Police Station, Opp. Amirgadh Railway Station',
+                                    'Angathala Police Station, Deesha-Tharad Road',
+                                    'Bhabhar Police Station, Dist. Banaskantha',
+                                    'Bhiladi Police Station',
+                                    'Chhapi Police Station',
+                                    'Danta Police Station, Ambaji Road',
+                                    'Danta Police Station, Ambaji Road',
+                                    'Deesha City Police Station',
+                                    'Deesha City Police Station',
+                                    'Deesha Rural Police Station',
+                                    'Dhanera Police Station',
+                                    'Diyodar Police Station',
+                                    'Diyodar Police Station',
+                                    'Gadh Police Station',
+                                    'Mavsari Police Station',
+                                    'Palanpur City Police Station',
+                                    'Palanpur City Police Station',
+                                    'Palanpur Taluka Police Station',
+                                    'Palanpur Taluka Police Station',
+                                    'Panthavada Police Station',
+                                    'Shihori Police Station',
+                                    'Suigam Police Station',
+                                    'Thara Police Station',
+                                    'Thara Police Station',
+                                    'Tharad Police Station',
+                                    'Tharad Police Station',
+                                    'Vadgam Police Station',
+                                    'Vav Police Station'],
+
+
+                                'BHARUCH': ['A Division Police Station, Sonari Patch Bantei Pase, Bharuch',
+                                    'Amod Police Station, Mamlatdar Kacher Compound, Amod',
+                                    'Ankleshwar GIDC Police Station, GIDC Ankleshwar',
+                                    'Ankleshwar City Police Station, Nagar Palika Pase, Ankleshwar',
+                                    'B Division Police Station, Limbdi Chok, Bharuch',
+                                    'Hansot Police Station, Mamlatdar Office Compound, Hansot',
+                                    'Jambusor Police Station, Ta. Jambusir, Dist- Bharuch',
+                                    'Kavi Police Station, Ta. Jambusor, Dist- Bharuch',
+                                    'Mahila Police Station, Bharuch',
+                                    'Nabipur Police Station, Dist- Bharuch',
+                                    'Palej Police Station, National Highway No 8, Dist - Bharuch',
+                                    'Umalla Police Station, Dist - Bharuch',
+                                    'Vagra Police Station, Taluka Panchayat Ni Bajuma, Vaghara',
+                                    'Valiya Police Station, Ground Floor Mamlatdar Office, Valiya',
+                                    'Ankleshwar Rural Police Station, Near S A Moter, Ankleshwar',
+                                    'Bharuch Police Station, Maktampura Taluka Police Station, Maktampura Road',
+                                    'Dahej Police Station, Dist - Bharuch',
+                                    'Jagdiya Police Station, Ta - Jagdiya Dist - Bharuch',
+                                    'Vedach Police Station, TA - Jambusor'],
+
+
+                                'BHAVNAGAR': ["A' Division Police Station, Jail Road, Bhavnagar",
+                                    "Alang Police Station, Alang, Ta. Talaja, Bhavnagar",
+                                    "B' Division Police Station, Mokhadaji Circle, Ghogha Road, Bhavnagar",
+                                    "Bagdana Police Station, Bagdana, Ta. Mahuva, Bhavnagar",
+                                    "Bhavnagar Port, Marine Police Station, Navabandar, Bhavnagar",
+                                    "Botad Police Station, Station Road, Botad",
+                                    "C' Division Police Station, Near Galaxy Cinema, Bhavnagar",
+                                    "D' Division Police Station, RTO Office, Near RTO Circle, Bhavnagar",
+                                    "Datha Police Station, Ta. Talaja, Bhavnagar",
+                                    "Gadhada Police Station, Opp. Benak Bank, Gadhada",
+                                    "Gariyadhar Police Station, Near State Bank of India, Gariyadhar",
+                                    "Ghogha Police Station, Near ST Stand, Ghogha",
+                                    "Jesar Police Station, Ta. Mahuva, Jesar",
+                                    "Mahila Police Station, Navapura, Bhavnagar",
+                                    "Mahuva Police Station, Juna Bagicha Chowk, Mahuva, Bhavnagar",
+                                    "Mota Khuntvada Police Station, Mota Khuntavada, Ta. Mahuva, Bhavnagar",
+                                    "Palitana Rural Police Station, Opp. Hathiyardhar Court, Palitana, Bhavnagar",
+                                    "Palitana Town Police Station, Near Bhairavnatha Chowk, Palitana, Bhavnagar",
+                                    "Palitana Town Police Station, Near Bhairavnatha Chowk, Palitana, Bhavnagar",
+                                    "Paliyad Police Station, Paliyad Police Line, Paliyad, Ta. Botad, Bhavnagar",
+                                    "Shihor Police Station, Vadla Chowk, Shihor, Bhavnagar",
+                                    "Songadh Police Station, Palitana Road, Songadh, Bhavnagar",
+                                    "Talaja Police Station, Talaja, Bhavnagar",
+                                    "Umrala Police Station, Near ST Stand, Opp. Referral Hospital, Umrala",
+                                    "Vallabhipur Police Station, Opp. Patel Boarding, Vallabhipur, Bhavnagar",
+                                    "Vartej Police Station, Bhavnagar, Rajkot Highway, Vartej, Bhavnagar",
+                                    "Velavadar Bhal Police Station, Velavadar, Ta. Bhavnagar, Dist. Bhavnagar"],
+
+
+                                'DAHOD': ['Limdi Police Station, Limdi, Dahod',
+                                    'Limkheda Police Station, Dahod',
+                                    'Bariya Police Station, Devgadh-Bariya, Dahod',
+                                    'Dahod Rural Police Station, Rabdal, Dahod',
+                                    'Dahod Town Police Station, Dahod',
+                                    'Dhanpur Police Station, Dhanpur, Dahod',
+                                    'Fatehpura Police Station, Dahod',
+                                    'Garbada Police Station, Dahod',
+                                    'Sukhasar Police Station, Ta- Fatepura, Dist- Dahod',
+                                    'Zalod Police Station, Dahod'],
+
+
+                                'DANGS': ['Ahwa Police Station, Main Road, Ahwa',
+                                    'Main Road, Ahwa',
+                                    'Saputara Police Station, Opp. Sarkari School, Ahwa',
+                                    'Waghai Police Station, Dungarada Road, Near Bus Stand, Ahwa'],
+
+
+                                "GANDHINAGAR": ['Adalaj Police Station',
+                                    'Dabhoda Police Station',
+                                    'Dehgam Police Station',
+                                    'Kaklol Police Station',
+                                    'Kaklol Taluka Police Station',
+                                    'Mansa Police Station',
+                                    'Mansa Police Station, Sector-16, Gandhinagar',
+                                    'Pethapur Police Station',
+                                    'Rakhial Police Station',
+                                    'Sector-21 Police Station',
+                                    'Sector-30, Block No. 128/2(GH) Tipe, Gandhinagar',
+                                    'Sector-7 Police Station'],
+
+
+                                "JAMNAGAR": ['Bedi Marin Police Station',
+                                    'Bhanvad Police Station, Darbargadh, Jamnagar',
+                                    'Bhanvad Police Station, Darbargadh, Jamnagar',
+                                    'City A, DV Police Station, Darbargadh Chock, Jamnagar',
+                                    'Dhwarka Police Station, Main Road Dhwarka',
+                                    'Ghrol Police Station, Opp. Bus Stand, Jamnagar',
+                                    'Ghrol Police Station, Opp. Bus Stand, Jamnagar',
+                                    'Jamjodhpur Police Station, Darbar Gadh',
+                                    'Jodiya Police Station, Ghrol Road, Jamnagar',
+                                    'Kalavad Police Station, Ghrol Road, Jamanagar',
+                                    'Kalyanpur Police Station, Jamnagar',
+                                    'Khambhaliya Police Station, Opp. Luhana Chatralya',
+                                    'Lalpur, Main Bazar, Jamnagar',
+                                    'Meghpar Police Station, Khambhariya Highway, Meghpar',
+                                    'Okha Marin Police Station',
+                                    'Okha Marin Police Station',
+                                    'Okha Police Station',
+                                    'Panchkoshi A Division',
+                                    'Panchkoshi B Division',
+                                    'Salaya Police Station',
+                                    'Shedhvadana Police Station',
+                                    'Vadinar Marin Police Station'],
+
+
+                                "JUNAGADH": ['Chorwad Police Station, Veraval-Porbandar Highway Road',
+                                    'Gir Gadhada Police Station, Near ST Stand',
+                                    'Junagadh Taluka Police Station, Near Kumbharvada',
+                                    'Keshod Police Station',
+                                    'Kodinar Police Station',
+                                    'Mahila Police Station Junagadh',
+                                    'Maliya Hatina Police Station',
+                                    'Manavadar Police Station',
+                                    'Mangrol Police Station',
+                                    'Mendarada Police Station',
+                                    'Nava Bandar Marin Police Station',
+                                    'Police Station A Division, Ozad Chowk',
+                                    'Police Station A Division, Ozad Chowk',
+                                    'Police Station B Division, Near ST Stand Road',
+                                    'Police Station Bheshan',
+                                    'Police Station Bilkha',
+                                    'Police Station Bantwa, Samega Road',
+                                    'Prabhat Patan Police Station',
+                                    'Seel Police Station, Near Gov. School',
+                                    'Seel Police Station, Near Gov. School',
+                                    'Somnath Marin Police Station',
+                                    'Sutrapada Police Station',
+                                    'Talala Police Station, Opp. Old ST Stand',
+                                    'Una Police Station',
+                                    'VanthalI Police Station',
+                                    'Veraval City Police Station',
+                                    'Vishavadar Police Station, Near ST Stand'],
+
+
+                                "KHEDA": ['Aantarsuba Police Station, Kheda',
+                                    'Balasinor Police Station, Balasinor',
+                                    'Chakalasi Police Station, Chakalasi',
+                                    'Dakor Police Station, Bus-Stand Road, Dakor',
+                                    'Kapadvanj Police Station, Kapadvanj',
+                                    'Kapadvanj Town Police Station, Kapadvanj',
+                                    'Kathlal Police Station, Kathlal',
+                                    'Kheda Police Station, Kheda',
+                                    'Limbashi Police Station, Limbashi, Kheda',
+                                    'Mahila Police Station, Nadiad',
+                                    'Mahudha Police Station, Mahudha, Kheda',
+                                    'Matar Police Station, Matar',
+                                    'Nadiad Rural Police Station, Nadiad',
+                                    'Nadiad South Police Station, Nadiad',
+                                    'Nadiad Town Police Station, Nadiad',
+                                    'Thasara Police Station, Thasara',
+                                    'Vaso Police Station, Vaso',
+                                    'Virpur Police Station, Virpur'],
+
+
+                                "KUTCHH_BHUJ": ['A Division Gandhidham Police Station',
+                                    'Adhoi Police Station',
+                                    'Adhoi Police Station',
+                                    'Adipur Police Station',
+                                    'Anjar Police Station, Anjar, Kutch - Bhuj',
+                                    'Bhachau Police Station, Kutch - Bhuj',
+                                    'Bhimasar Police Station, Cemp Aadeshwar',
+                                    'City Police Station, Bhuj',
+                                    'Dayapar Police Station',
+                                    'Gandhidham Police Station, B Division',
+                                    'Jakhau Police Station',
+                                    'Kandala Water Wing Office',
+                                    'Kandla Police Station',
+                                    'Khadir Police Station, Gadhada',
+                                    'Khavda Police Station',
+                                    'Kothara Police Station',
+                                    'Mahila Police Station Bhuj',
+                                    'Mandavai Police Station',
+                                    'Mandavi Water Police Station, Camp Mudra, Customs House',
+                                    'Marin Police Station, Mudra',
+                                    'Mundra Police Station',
+                                    'Nakhatrana Police Station',
+                                    'Naliya Police Station',
+                                    'Nara Police Station',
+                                    'Narayansarovar Police Station',
+                                    'No 4 Batalian Border Wing H-G Rudramata Home Guards',
+                                    'Police HQ. Bhuj',
+                                    'Rapar Police Station',
+                                    'Taluka Police Station, Kutch-Bhuj',
+                                    'Vayor Police Station',
+                                    'Wireless Police Station'],
+
+
+                                "MAHESANA": ['Bavalu Police Station, Bavalu',
+                                    'Becharaji Police Station',
+                                    'Kadi Police Station',
+                                    'Kheralu Police Station',
+                                    'Langhanj Police Station',
+                                    'Mahesana City Police Station',
+                                    'Mahesana Taluka Police Station',
+                                    'Santhal Police Station',
+                                    'Satlasna Police Station',
+                                    'Unjha Police Station',
+                                    'Vadnagar Police Station',
+                                    'Vasai Police Station',
+                                    'Vijapur Police Station',
+                                    'Visnagar Police Station'],
+
+
+                                "NARMADA": ['Dediyapada Police Station, Near Mamlatdar Kacheri, Dediyapada',
+                                    'Garudeshwar Police Station, Opp. Police Line, Garudeshwar',
+                                    'Garudeshwar Police Station, Opp. Police Line, Garudeshwar',
+                                    'Kevadiya Police Station, Pathika Tran Rasta, Narmada',
+                                    'Rajpipla Police Station, Near Government School, Rajpipla',
+                                    'Sagbara Police Station, Highway Road, Sagbara Town, Narmada',
+                                    'Tilakvada Police Station, Tilakvada Town, Narmada'],
+
+
+                                "NAVSARI": ['Bilimora Police Station, Navapura, Jain Mandir Ni Same, Bilimora',
+                                    'Chikhali Police Station, Near Mamlatdar Kacheri, Chikhali',
+                                    'Gandevi Police Station, Mamlatdar Kacheri Compound, Navsari',
+                                    'Jalalpor Police Station, City Seveyer Ni Kacheri, Jalalpor',
+                                    'Mahila Police Station, Navsari',
+                                    'Navsari Rural Police Station, Mota Bazar, Navsari',
+                                    'Navsari Town Police Station, Navsari',
+                                    'Vasda Police Station, Opp. New Circuit House, Vasda'],
+
+
+                                "PANCHMAHAL": ['Dtwas Police Station, Kadana, Panchmahal',
+                                    'Godhara Town Police Station',
+                                    'Halol Police Station',
+                                    'Jambughoda Police Station',
+                                    'Kalol Police Station',
+                                    'Khanpur Police Station',
+                                    'Kothamba Police Station, Lunavada',
+                                    'Lunavada Police Station',
+                                    'Morva Police Station, Morva',
+                                    'Pavagath Police Station',
+                                    'Rajgath Police Station, Gogamba',
+                                    'Santrampur Police Station',
+                                    'Sehra Police Station',
+                                    'Taluka Police Station, Godhra',
+                                    'Vejalpur Police Station'],
+
+
+                                "PATAN": ['Harij Police Station',
+                                    'Kakoshi Police Station',
+                                    'Patan City Police Station',
+                                    'Patan Taluka Police Station',
+                                    'Police Station Chanasma',
+                                    'Police Station Varahi',
+                                    'Radhanpur Police Station',
+                                    'Sami Police Station',
+                                    'Santalpur Police Station',
+                                    'Shiddhpur Police Station',
+                                    'Vagdod Police Station'],
+
+
+                                "PORBANDAR": ['Kamlabaug Police Station, Opp. Gandhi Hospital',
+                                    'Kirti Mandir Police Station',
+                                    'Kutiyana Police Station',
+                                    'Madhav Pur Police Station',
+                                    'Navibandar Police Station',
+                                    'Ranava V Police Station',
+                                    'Udhyognagar Police Station'],
+
+
+                                "RAJKOT_CITY": ['A-Division Police Station, Dhebar Chock, Rajkot',
+                                    'B-Division Police Station, Ramnath Para, Near Old Jail, Rajkot',
+                                    'Bhaktinagar Police Station, Near Neelkanth Cinema, Kothariya Road, Rajkot',
+                                    'Bhaktinagar Police Station, Near Neelkanth Cinema, Kothariya Road, Rajkot',
+                                    'Bhaktinagar Police Station, Near Neelkanth Cinema, Kothariya Road, Rajkot',
+                                    'Gandhigram Police Station, 150 Foot Ring Road, Opp. Sterling Hospital',
+                                    'Kuvavada Police Station, Ahmedabad Highway, Nava Gam, Rajkot',
+                                    'Malvianagar Road Police Station, Mavadi Main Road, Rajkot',
+                                    'Pradyuman Nagar Police Station, Near Jayhind Press, Rajkot',
+                                    'Rajkot Taluka Police Station, Opp. Pathik Ashram, Jamnagar Road, Rajkot',
+                                    'Thorala Police Station, Bhavnagar Road, Rajkot'],
+
+
+                                "RAJKOT_RURAL": ['Bhadla Police Station, Taluka - Jasdan, Rajkot',
+                                    'Bhagvatpara Gondal Mahila City Police Station, Rajkot',
+                                    'Bhagvatpara Gondal City Police Station, Rajkot',
+                                    'Bhagvatpara Gondal Taluka Police Station, Rajkot',
+                                    'Bhayavadar Police Station, Bhayavadar, Rajkot',
+                                    'Dhoraji Police Station, Near Patel Chatralaya, Dhoraji, Rajkot',
+                                    'Jamkandona Police Station, Rajkot',
+                                    'Jasdan Police Station, Rajkot',
+                                    'Jasdan Police Station, Rajkot',
+                                    'Jetpur City Police Station, Jetpur',
+                                    'Jetpur Taluka Police Station, Junagadh Road, Jetpur, Rajkot',
+                                    'Jetpur Taluka Police Station, Junagadh Road, Jetpur, Rajkot',
+                                    'Kotda Sangani Police Station, Sardar Chock, Rajkot',
+                                    'Lodhika Police Station, Rajkot',
+                                    'Maliya Police Station, Maliya',
+                                    'Morbi City Police Station, Jail Road Morbi',
+                                    'Morbi Taluka Police Station, Morbi',
+                                    'Paddhari Police Station, Rajkot',
+                                    'Patanvav Police Station, Dhoraji, Rajkot',
+                                    'Tankara Police Station, Tankara, Rajkot',
+                                    'Upleta Police Station, Rajkot',
+                                    'Vinchiya Police Station, Rajkot',
+                                    'Wankaner Police City Station, Wankaner, Rajkot',
+                                    'Wankaner Taluka Police Station, Wankaner, Rajkot'],
+
+
+                                "SABARKANTHA": ['Ambaliyara Police Station',
+                                    'Bayad Police Station, Sabarkantha',
+                                    'Bhiloda Police Station, Bhiloda',
+                                    'Dhansura Police Station, Sabarkantha',
+                                    'Gambhoi Police Station, Bhiloda Road',
+                                    'Himmatnagar City Police Station, Himmatnagar',
+                                    'Himmatnagar Rural Police Station, Mahetapura',
+                                    'Ider Police Station, Highway Road',
+                                    'Jadar Police Station, Ider',
+                                    'Khedbrahma Police Station, Highway Road',
+                                    'Malpur Police Station, Sabarkantha',
+                                    'Meghraj Police Station, Sabarkantha',
+                                    'Modasa Rural Police Station, Sabalpur',
+                                    'Modasa Town Police Station',
+                                    'Posina Police Station, Khedbrahma',
+                                    'Prantij Police Station, Highway Road',
+                                    'Shamlaji Police Station, Bhiloda',
+                                    'Talod Police Station, Talod',
+                                    'Vadali Police Station, Vadali',
+                                    'Vijaynagar Police Station, Sabarkantha'],
+
+
+                                "SURAT_CITY": ['Ichchapur Police Station, ONGC Char Rasta ni pase, Hazira Road, Surat',
+                                    'Katar Gam Police Station, Ramji Mandir najik, Surat',
+                                    'Kopadra Police Station, Varacha Road, Surat',
+                                    'Limbayat Police Station, Maruti Nagar, Helth Senter ni bajuma, Surat',
+                                    'Mahidharpura Police Station, Post Office ni bajuma, Surat',
+                                    'Mahila Police Station, Police HQ ni same, Athavaline, Surat',
+                                    'Marrion Police Station, Hajira Road, Surat',
+                                    'Rander Police Station, Bus Stop najik, Rander, Surat',
+                                    'Sachin Police Station, Surat Navsari Main Road, Sachin Surat',
+                                    'Udhana Police Station, Didoli Overbridge ni bajuma, Surat',
+                                    'Umara Police Station, Athavaline, Surat',
+                                    'Varacha Police Station, Varacha Road, Surat',
+                                    'Aathvalines Police Station, Chok Char Rasta, Surat',
+                                    'Adajan Police Station, Kavi Kalapi Garden ni same, Surat',
+                                    'Amroli Police Station, Sayan Road, Surat',
+                                    'Chok Bazar Police Station, Moglisara Road, Surat',
+                                    'Khatodara Police Station, Udhana Magdalla Road, Surat',
+                                    'Pandesara Police Station, 68/2 GIDC, Pandesara, Surat',
+                                    'Puna Police Station, Puna Patiya, Surat',
+                                    'Salabatpura Police Station, Surat'],
+
+
+                                "SURAT_RURAL": ['Bardoli Police Station, Near Mamlatdar Office, Limbda Chok, Bardoli',
+                                    'Kadodara GIDC Police Station, Kadodara, Surat',
+                                    'Kamrej Police Station, Vajir Faliyu, Kamrej Gam, Surat',
+                                    'Kosamba Police Station, Near Railway Station, Mangrol, Surat',
+                                    'Mahila Police Station, Kamrej Char Rasta, Kamrej, Surat Rural',
+                                    'Mahuva Police Station, Mamlatdar Kacheri ni bajuma, Mahuva, Surat',
+                                    'Mandvi Police Station, Juna Bus Stop pase, Mandvi, Surat',
+                                    'Mangrol Police Station, Mosali Gam, Surat',
+                                    'Olpad Police Station, Ta- Olpad, Dist- Surat',
+                                    'Palsana Police Station, Palsana Gam, Surat'],
+
+
+                                "SURENDRANAGAR": ['Chotila Police Station',
+                                    'Chuda Police Station',
+                                    'Dasada Police Station',
+                                    'Dhandhgra City Police Station, Surendranagar',
+                                    'Dhandhgra Taluka Police Station, Surendranagar',
+                                    'Halwad Police Station',
+                                    'Jorawar Nagar Police Station', ,
+                                    'Limdi Police Station',
+                                    'Muli Police Station, Muli',
+                                    'Near Ajmer Tower, City Police, Surendranagar',
+                                    'Panshina Police Station',
+                                    'Patdi Police Station',
+                                    'PSI, Lakhtar P.S Lakhtar',
+                                    'Sayla Police Station, National Highway 8',
+                                    'Thangadh Police Station',
+                                    'Vadhwan Police Station',
+                                    'Zinzuvada Police Station'],
+
+
+                                "TAPI": ['Kankrapar Police Station, Kankrapar, Tapi',
+                                    'Nizar Police Station, Nizar, Tapi',
+                                    'Songath Police Station, Songath, Tapi',
+                                    'Uchchhal Police Station, Uchchhal, Tapi',
+                                    'Ukai Police Station, Songath, Tapi',
+                                    'Valod Police Station, Valod, Tapi',
+                                    'Vyara Police Station, Vyara, Tapi'],
+
+
+                                "VADODARA_CITY": ['Chhani Police Station, Chhani Gam, Sakhada Road, Vadodara',
+                                    'City Police Station, SBI Main Branch Ni Bajuma, Panigate Road',
+                                    'Fatehganj Police Station, Nava Yard, Vadodara',
+                                    'Gorwa Police Station, Gorwa, Vadodara',
+                                    'J.P. Road Police Station, Patrakar Char Rasta, Tandalja, Baroda',
+                                    'Jawaharnagar Police Station, Ramoli Bridge Ni Pase, Jawaharnagar',
+                                    'Karelibag Police Station, Bhutadizanpa, Vadodara',
+                                    'Kisanvadi Police Station, Gujarat Housing Board, Navjivan-Aajva Road',
+                                    'Mahila Police Station, Opp. Sayaji Hospital, Sayajiganj',
+                                    'Makarpura Police Station',
+                                    'Navapura Police Station, R.V. Desai Road, Navapura',
+                                    'Panigate Police Station',
+                                    'Raopura Police Station',
+                                    'Sayajiganj Police Station, Near Radhika Restaurant, Railway Station',
+                                    'Traffic Police Station, Sayajiganj, Vadodara',
+                                    'Vadi Police Station, Gendi Gate Darwaja Ni Bajuma, Chokhandi'],
+
+
+                                "VADODARA_RURAL": ['Dabhoi Police Station, Nr Kadiyavad, Dabhoi',
+                                    'Mahila Police Station, Kothi Kacheri, Nr DSP Office, Vadodara',
+                                    'Bhadarva Police Station, Rayanvagha',
+                                    'Bodeli Police Station, Bodeli',
+                                    'Chhota Udaipur Police Station',
+                                    'Desar (Pandu) Police Station, Ta- Savli, Dist- Vadodara',
+                                    'Jetpur Pavi Police Station, Ta- Jetpur, Dist- Vadodara',
+                                    'Karai Police Station, Ta- Jetpur, Vadodara',
+                                    'Karali Police Station, Ta- Jetpur, Vadodara',
+                                    'Karjan Police Station, Ta Karjan',
+                                    'Kawat Police Station, Socity Faliya Najik, Kawat',
+                                    'Nasvadi Police Station',
+                                    'Padra Police Station, Nava Bus Stand Pachal, Padra',
+                                    'Ragpur Police Station, Ta- Chhota Udepur, Dist- Vadodara',
+                                    'Sankhanda Police Station, Vadodara Rural',
+                                    'Savli Police Station, Giridharnagar Chokdi, Savli',
+                                    'Sinor Police Station, Dist Vadodara',
+                                    'Vadodara Taluka Police Station, Panigar Vadodara',
+                                    'Vaghodiya Police Station, Ta- Vaghodiya, Dist- Vadodara',
+                                    'Varnama Police Station, Panchayat Ni Bajuma, Dist- Vadodara'],
+
+
+                                "VALSAD": ['Bhilad Police Station, Umargam, Valsad',
+                                    'Dharampur Police Station, Opp. ST Depo, Dharampur',
+                                    'Dungari Police Station, Railway Station Ni Same, Dungari',
+                                    'Kaparda Police Station, Kaparada, Valsad',
+                                    'Mahila Police Station, SP Office, Dharampur Road, Valsad',
+                                    'Pardi Police Station, On N.H. 8, Pardi',
+                                    'Umargam Police Station, Umargam',
+                                    'Valsad Rural Police Station, Near Kalyan Bag, Valsad',
+                                    'Valsad Town Police Station, Near Jalaram Mandir, Valsad',
+                                    'Vapi Town Police Station, Nehru Street, Opp. Vapi Super Market, Pardi',
+                                    'Vapi Upnagar Police Station, Pardi, Vapi']
+                            };
+
+                            function populateOptions(selectElement, optionsArray) {
+                                selectElement.innerHTML = '';
+
+                                var defaultOption = document.createElement("option");
+                                defaultOption.value = "";
+                                defaultOption.text = "-----Select Option-----";
+                                selectElement.add(defaultOption);
+
+                                for (var i = 0; i < optionsArray.length; i++) {
+                                    var option = document.createElement("option");
+                                    option.value = optionsArray[i];
+                                    option.text = optionsArray[i].toUpperCase();
+                                    selectElement.add(option);
+                                }
+                            }
+
+                            selectState.addEventListener("change", function () {
+                                if (selectState.value === 'Gujarat') {
+                                    populateOptions(selectDistrict, GUJARAT_DISTRICTS);
+                                    // Clear police station options when changing state
+                                    selectPoliceStation.innerHTML = '';
+                                } else {
+                                    // Clear district and police station options for other states
+                                    selectDistrict.innerHTML = '';
+                                    selectPoliceStation.innerHTML = '';
+                                }
+                            });
+
+                            selectDistrict.addEventListener("change", function () {
+                                var selectedDistrict = selectDistrict.value;
+
+                                if (DISTRICT_POLICE_STATIONS.hasOwnProperty(selectedDistrict)) {
+                                    populateOptions(selectPoliceStation, DISTRICT_POLICE_STATIONS[selectedDistrict]);
+                                } else {
+                                    // Clear police station options if the district is not found
+                                    selectPoliceStation.innerHTML = '';
+                                }
+                            });
+
+                            // Additional event listener for the police station dropdown if needed
+                            // selectPoliceStation.addEventListener("change", function () {
+                            //   // Handle police station selection if needed
+                            // });
+                        </script>
+                    </label>
+                </div>
+            </div>
+            <!-- Container 4 Stars Feedback-->
+            <div class="grid-container4">
+
+                <!-- Rating -->
+                <div class="grid-item">
+                    <div class="container">
+                        <div class="star-width">
+                            <h1 id="text">Rate Us <span>*</span></h1>
+                            <input type="radio" name="rate" id="rate-5" value="5">
+                            <label for="rate-5" class="fa fa-star"></label>
+                            <input type="radio" name="rate" id="rate-4" value="4">
+                            <label for="rate-4" class="fa fa-star"></label>
+                            <input type="radio" name="rate" id="rate-3" value="3">
+                            <label for="rate-3" class="fa fa-star"></label>
+                            <input type="radio" name="rate" id="rate-2" value="2">
+                            <label for="rate-2" class="fa fa-star"></label>
+                            <input type="radio" name="rate" id="rate-1" value="1">
+                            <label for="rate-1" class="fa fa-star"></label>
+                            <header id="Rating"></header>
+                            <small id="StarRating"></small>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Feedback -->
+                <div class="grid-item">
+                    <label for="feedback" id="feedbackLabel">Leave your Feeback <span>*</span>
+                        <textarea name="feedback" id="feedback" cols="150" rows="7"
+                            placeholder="Enter your Feedback"></textarea>
+                        <small id="Feedback"></small>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Container 5 Captcha -->
+            <div class="grid-container5">
+                <!-- Captcha Display -->
+                <div class="grid-item">
+                    <input type="text" value="" disabled id="captchaCode">
+                    <button id="refreshButton">
+                        <i class="fa fa-refresh"></i>
+                    </button>
+                </div>
+                <!-- Captcha input -->
+                <div class="grid-item">
+                    <input type="text" id="captchaInput" placeholder="Enter the captcha code here">
+                </div>
+            </div>
+            <!-- Container 6 Submit , Reset -->
+            <div class="grid-container6">
+                <div class="grid-item">
+                    <!-- Submit Button -->
+                    <div class="grid-item">
+                        <input type="submit" value="Submit" id="submit" onclick="check()">
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <!-- Reset Button -->
+                    <div class="grid-item">
+                        <input type="reset" value="Reset" id="reset">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+    <div class="Footer">
+
+        <footer class="footer">
+           
+            <a class="text-white" href="http://localhost:3000/T&C">Terms & Conditions</a>
+            |
+            © 2020 Copyright:
+            <a class="text-white" href="https://gujaratindia.gov.in/">Government of Gujarat</a>
+            
+        </footer>
+    </div>
+</body>
+<!-- <script src="/views/feedback.js"></script> -->
+<script>
+    let fname = document.getElementById("fname");
+    let Fname = document.getElementById("Fname");
+
+    let lname = document.getElementById("lname");
+    let Lname = document.getElementById("Lname");
+
+    let contact = document.getElementById("contact-no");
+    let Contact = document.getElementById("Contact-no");
+
+    let age = document.getElementById("age");
+    let Age = document.getElementById("Age");
+
+    let email = document.getElementById("email");
+    let Email = document.getElementById("Email");
+
+    let feedback = document.getElementById("feedback");
+    let Feedback = document.getElementById("Feedback");
+
+    fname.addEventListener("blur", function (e) {
+        Fname.innerHTML = "";
+        if (fname.value == "" || fname.value == null) {
+            Fname.innerHTML = "()*Please Enter Your First-Name";
+        }
+        else {
+            //FN = ((e.which >= 65 && e.which <= 90) || (e.which >= 97 && e.which <= 121));
+            let FN = /^([a-zA-Z]{2,20})$/;
+            if (!FN.test(fname.value)) {
+                Fname.innerHTML = "Invalid Input";
+            }
+        }
+    });
+
+    fname.addEventListener("keypress", function (e) {
+        Fname.innerHTML = "";
+        let FN = ((e.which >= 65 && e.which <= 90) || (e.which >= 97 && e.which <= 121));
+        if (FN == false) {
+            Fname.innerHTML = "Invalid Input";
+        }
+    });
+
+
+    lname.addEventListener("blur", function (e) {
+        Lname.innerHTML = "";
+        if (lname.value == "" || lname.value == null) {
+            Lname.innerHTML = "()*Please Enter Your First-Name";
+        }
+        else {
+            //FN = ((e.which >= 65 && e.which <= 90) || (e.which >= 97 && e.which <= 121));
+            let LN = /^([a-zA-Z]{2,20})$/;
+            if (!LN.test(lname.value)) {
+                Lname.innerHTML = "Invalid Input";
+            }
+        }
+    });
+
+    lname.addEventListener("keypress", function (e) {
+        Lname.innerHTML = "";
+        let LN = ((e.which >= 65 && e.which <= 90) || (e.which >= 97 && e.which <= 121));
+        if (LN == false) {
+            Lname.innerHTML = "Invalid Input";
+        }
+    });
+
+
+    email.addEventListener("blur", function (e) {
+        Email.innerHTML = "";
+        if (email.value == "" || email.value == null) {
+            Email.innerHTML = "()*Please Enter Your Email";
+        }
+        else {
+            let EM = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,8}\b$/i;
+            if (!EM.test(email.value)) {
+                Email.innerHTML = "Invalid Input";
+            }
+        }
+    });
+
+    email.addEventListener("keypress", function (e) {
+        Email.innerHTML = "";
+    });
+
+
+    contact.addEventListener("blur", function (e) {
+        Contact.innerHTML = "";
+        if (contact.value == "" || contact.value == null) {
+            Contact.innerHTML = "()*Please Enter Your Contact-no";
+        }
+        else {
+            let CN = /^([0-9]{10})$/;
+            if (!CN.test(contact.value)) {
+                Contact.innerHTML = "Invalid Input";
+            }
+        }
+    });
+
+    contact.addEventListener("keypress", function (e) {
+        Contact.innerHTML = "";
+        let CN = e.which >= 48 && e.which <= 57;
+        if (CN == false) {
+            Contact.innerHTML = "Invalid Input";
+        }
+    });
+
+
+    age.addEventListener("blur", function (e) {
+        Age.innerHTML = "";
+        if (age.value == "" || age.value == null) {
+            Age.innerHTML = "()*Please Enter Your Age";
+        }
+        else {
+            let AG = /^([0-9]{0,3})$/;
+            if (!AG.test(age.value)) {
+                Age.innerHTML = "Invalid Input";
+            }
+        }
+    });
+
+    age.addEventListener("keypress", function (e) {
+        Age.innerHTML = "";
+        let AG = e.which >= 48 && e.which <= 57;
+        if (AG == false) {
+            Age.innerHTML = "Invalid Input";
+        }
+    });
+
+    feedback.addEventListener("blur", function (e) {
+        Feedback.innerHTML = "";
+        if (feedback.value == "" || feedback.value == null) {
+            Feedback.innerHTML = "()* Please Give Feedback";
+        }
+    });
+
+    // Given Captcha Code
+    let captchaCode = document.getElementById("captchaCode");
+
+    // Users written Captcha Code
+    let captchaInput = document.getElementById("captchaInput");
+
+    let refreshButton = document.getElementById("refreshButton");
+
+
+    document.body.addEventListener("load", generateCaptcha);
+    refreshButton.addEventListener("click", refreshButtonClick);
+
+    // Generating Captcha when the page loads
+    function generateCaptcha() {
+
+        const randomChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        let uniqeChar = "";
+
+        for (let i = 1; i <= 5; i++) {
+            uniqeChar = randomChar.charAt(Math.random() * randomChar.length) + uniqeChar;
+        }
+        captchaCode.value = uniqeChar;
+    }
+
+    function refreshButtonClick() {
+        captchaInput.value = "";
+        generateCaptcha();
+    }
+
+    let Fn = false, Ln = false, Em = false, Cn = false, Ad = false, Ag = false, Fb = false;
+
+    let submitButton = document.getElementById("submit");
+    let resetButton = document.getElementById("reset");
+
+    let captcha = false;
+    submitButton.addEventListener("click", function (e) {
+
+        Fname.innerHTML = "";
+        if (fname.value === "" || fname.value === null) {
+            Fname.innerHTML = "()* Your First Name Required";
+            Fn = false;
+        } else {
+            var FN = /^([a-zA-Z]{2,20})$/;
+            if (!FN.test(fname.value)) {
+                Fname.innerHTML = "Invalid Input";
+                Fn = false;
+            } else {
+                Fn = true;
+            }
+        }
+
+        Lname.innerHTML = "";
+        if (lname.value === "" || lname.value === null) {
+            Lname.innerHTML = "()* Your Last Name Required";
+            Ln = false;
+        } else {
+            var LN = /^([a-zA-Z]{2,20})$/;
+            if (!LN.test(lname.value)) {
+                Lname.innerHTML = "Invalid Input";
+                Ln = false;
+            } else {
+                Ln = true;
+            }
+        }
+
+        Age.innerHTML = "";
+        if (age.value === "" || age.value === null) {
+            Age.innerHTML = "()* Your Age Required";
+            Ag = false;
+        } else {
+            var AG = /^([0-9]{0,3})$/;
+            if (!AG.test(age.value)) {
+                Age.innerHTML = "Invalid Input";
+                Ag = false;
+            } else {
+                Ag = true;
+            }
+        }
+
+        Email.innerHTML = "";
+        if (email.value === "" || email.value === null) {
+            Email.innerHTML = "()* Your Email Required";
+            Em = false;
+        } else {
+            var EM = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,8}\b$/i;
+            if (!EM.test(email.value)) {
+                Email.innerHTML = "Invalid Input";
+                Em = false;
+            } else {
+                Em = true;
+            }
+        }
+
+        Feedback.innerHTML = "";
+        if (feedback.value === "" || feedback.value === null) {
+            Feedback.innerHTML = "()* Your Feedback Required";
+            Fb = false;
+        } else {
+            Fb = true;
+        }
+
+        Contact.innerHTML = "";
+        if (contact.value === "" || contact.value === null) {
+            Contact.innerHTML = "()* Your Contact-no Required";
+            Cn = false;
+        } else {
+            var CN = /^([0-9]{10})$/;
+            if (!CN.test(contact.value)) {
+                Contact.innerHTML = "Invalid Input";
+                Cn = false;
+            } else {
+                Cn = true;
+            }
+        }
+
+        // Captcha validation
+        let captchaInput = document.getElementById("captchaInput");
+        let captchaCode = document.getElementById("captchaCode");
+
+        if (captchaCode.value === captchaInput.value) {
+            alert("Correct Captcha code");
+            captcha = true;
+        } else {
+            alert("Incorrect Captcha code");
+            //return false; // Stop the function if captcha is incorrect
+            captcha = false;
+        }
+
+
+        if (Fn == true && Ln == true && Em == true && Cn == true && Ag == true && Fb == true && a == true && b == true && c == true && d == true && e == true && captcha == true) {
+            //alert("Your Feedback is Successfully Submitted...");
+        } else {
+            //alert("Invalid Input");
+        }
+
+    });
+    resetButton.addEventListener("click", function () {
+        Fname.innerHTML = "";
+        Lname.innerHTML = "";
+        Age.innerHTML = "";
+        Email.innerHTML = "";
+        Contact.innerHTML = "";
+        Feedback.innerHTML = "";
+        Gender.innerHTML = "";
+        SELECTSTATE.innerHTML = "";
+        SELECTDISTRICT.innerHTML = "";
+        SELECTPOLICE.innerHTML = "";
+        Rating.innerHTML = "";
+    });
+    let Rating = document.getElementById("StarRating");
+    function validate() {
+        let G = document.myform.gender.value;
+        let S = document.myform.selectState.value;
+        let D = document.myform.selectDistrict.value;
+        let P = document.myform.selectPoliceStation.value;
+
+
+
+        let btn5 = document.getElementById("rate-5");
+        let btn4 = document.getElementById("rate-4");
+        let btn3 = document.getElementById("rate-3");
+        let btn2 = document.getElementById("rate-2");
+        let btn1 = document.getElementById("rate-1");
+
+        let e = true;
+        if (btn1.checked == false && btn2.checked == false && btn3.checked == false && btn4.checked == false && btn5.checked == false) {
+            Rating.innerHTML = "()*Please Select Any one Star";
+            e = false;
+        }
+        else {
+            Rating.innerHTML = "";
+        }
+
+
+
+        Gender.innerHTML = "";
+        SELECTSTATE.innerHTML = "";
+        SELECTDISTRICT.innerHTML = "";
+        SELECTPOLICE.innerHTML = "";
+
+        let a = true, b = true, c = true, d = true;
+        if (G == "") {
+            Gender.innerHTML = "()*Please Select Gender";
+            a = false;
+            //alert("Please Select Gender");
+            //return false;
+        }
+
+        if (S == "") {
+            SELECTSTATE.innerHTML = "()*Please Select State";
+            SELECTDISTRICT.innerHTML = "()*Please Select District";
+            SELECTPOLICE.innerHTML = "()*Please Select Police Station";
+            b = false;
+            //alert("Please Select State");
+            //return false;
+        } else if (D == "") {
+            SELECTDISTRICT.innerHTML = "()*Please Select District";
+            SELECTPOLICE.innerHTML = "()*Please Select Police Station";
+            c = false;
+            //alert("Please Select District");
+            //return false;
+        } else if (P == "") {
+            SELECTPOLICE.innerHTML = "()*Please Select Police Station";
+            d = false;
+            //alert("Please Select Police Station");
+            //return false;
+        }
+        if (a == false || b == false || c == false || d == false || e == false || Fn == false || Ln == false || Em == false || Cn == false || Ag == false || Fb == false || captcha == false) {
+            return false;
+        }
+    }
+</script>
+
+</html>
