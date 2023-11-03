@@ -8,60 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="feedback.css"> -->
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
-        }
-        body{
-            background-color: aliceblue;
-        }
-        .header {
-            height: 15vh;
-            background-color: #333;
-            display: flex;
-            justify-content: flex-start;
-            /* margin-bottom: 16px; */
-        }
-
-        .header-logo>img {
-            width: 70px;
-        }
-
-        #police-logo {
-            margin-left: 20px;
-        }
-
-        .header-text {
-            color: #f5f5f5;
-        }
-
-        .header-text>h1 {
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        .header-text>p {
-            padding-top: 10px;
-        }
-
-        /* Nav bar */
-        .nav-bar {
-            margin-top: 70px;
-            margin-left: auto;
-            /* align-self: last baseline; */
-            height: 30px;
-            color: #f5f5f5;
-        }
-
-        .nav-bar>a {
-            font-size: 20px;
-            text-decoration: none;
-            margin: 10px;
-            color: #f5f5f5;
-        }
-
-        small {
-            color: red;
         }
 
         p {
@@ -76,6 +25,55 @@
 
         span {
             color: red;
+        }
+
+        .header {
+            height: 14vh;
+            background-color: #333;
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .header-logo>img {
+            width: 70px;
+        }
+
+        #police-logo {
+            margin-left: 10px;
+        }
+
+        .header-text {
+            width: 15%;
+            color: #f5f5f5;
+        }
+
+        .header-text>h1 {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .header-text>p {
+            margin-top: -5px;
+            text-align: center;
+        }
+
+        /* Nav bar */
+        .nav-bar {
+            margin-left: auto;
+            align-self: last baseline;
+            height: 30px;
+        }
+
+        .nav-bar>a {
+            text-decoration: none;
+            font-size: 20px;
+            margin: 10px;
+            color: #f5f5f5;
+        }
+
+        .nav-bar>span {
+            color: #f5f5f5;
         }
 
         /* Main Container */
@@ -175,8 +173,9 @@
         #submit,
         #reset {
             background-color: #333;
-            color: white;
+            color: #f5f5f5;
             border-radius: 50px;
+            cursor: pointer;
             height: 60px;
             font-size: 20px;
             width: 150px;
@@ -207,15 +206,15 @@
 
         input:not(checked)~label:hover,
         input:not(checked)~label:hover~label {
-            color: yellow;
+            color: green;
         }
 
         input:checked~label {
-            color: yellow;
+            color: green;
         }
 
         input#rate-5:checked~label {
-            color: yellow;
+            color: green;
             text-shadow: 0 0 5px gray;
         }
 
@@ -247,55 +246,83 @@
             display: block;
         }
 
-        .header {
-            height: 15vh;
-            background-color: #333;
-            display: flex;
-            justify-content: flex-start;
-            /* margin-bottom: 16px; */
-        }
-
-        .header-logo>img {
-            width: 70px;
-        }
-
-        #police-logo {
-            margin-left: 20px;
-        }
-
-        .header-text {
-            color: #f5f5f5;
-        }
-
-        .header-text>h1 {
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        .header-text>p {
-            padding-top: 10px;
-        }
-
-        /* Nav bar */
-        .nav-bar {
-            margin-top: 70px;
-            margin-left: auto;
-            /* align-self: last baseline; */
-            height: 30px;
-            color: #f5f5f5;
-        }
-
-        .nav-bar>a {
+        header {
+            color: black;
             font-size: 20px;
+            font-weight: bold;
+            margin: 5px 0 20px;
+            width: 100%;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .footer a {
             text-decoration: none;
-            margin: 10px;
-            color: #f5f5f5;
+            color: #fff;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
 
         /* Media Queries */
-        @media screen and (max-width : 480px) {
+        @media screen and (max-width : 420px) and (min-width : 320px) {
+            .header-logo {
+                width: 30%;
+                /* border: 1px solid red; */
+            }
+
+            .header-logo>img {
+                margin-top: 20px;
+                width: 60px;
+            }
+
+            .header {
+                height: 22vh;
+            }
+
+            .header-text {
+                width: 65%;
+                margin-left: 10px;
+            }
+
+            .header-text>h1 {
+                font-size: 20px;
+                margin-top: 35px;
+            }
+
+            .header-text>p {
+                font-size: 12px;
+                margin-top: -5px;
+            }
+
+            /* Nav bar */
+            .nav-bar {
+                height: 40px;
+                width: 200px;
+            }
+
+            .nav-bar>a {
+                font-size: 15px;
+            }
+
+            .nav-bar>span {
+                color: #333;
+            }
+
+            /* Form */
             form {
-                width: 90%;
+                width: 75%;
+                margin: 0;
             }
 
             .grid-container1,
@@ -304,6 +331,11 @@
             .grid-container4,
             .grid-container5 {
                 grid-template-columns: auto;
+            }
+
+            .grid-container6 {
+                width: 50%;
+                margin: auto;
             }
 
             .grid-item {
@@ -327,63 +359,17 @@
                 width: 90%;
             }
         }
-        .Footer {
-            display: flex; 
-            background-color: #333;
-            color: #fff; 
-            padding: 20px; 
-            align-items: center;
-            padding-left:35%;
-            font-weight: bold;
-          } 
-          .footer a {
-            
-            text-decoration: none; 
-            color: #fff; 
-          }
-          
-          .footer a:hover {
-            text-decoration: underline; 
-          }
-          @media screen and (min-width : 480px) {
-
-            /* Header */
-            .header {
-                height: 15vh;
-            }
-
-            .header-text>h1 {
-                font-size: 26px;
-                margin-top: 20px;
-                margin-left: 10px;
-            }
-
-            .header-text>p {
-                margin-top: -5px;
-                margin-left: 10px;
-            }
-
-            /* Nav bar */
-            .nav-bar {
-                height: 50px;
-                /* margin-left: 10px; */
-            }
-
-            .nav-bar>span {
-                color: #333;
-            }
-        }
     </style>
 </head>
 
 <body onload="generateCaptcha()">
-
+    <!-- Header -->
     <div class="header">
         <div class="header-logo">
             <img src="/images/GUJARAT POLICE LOGO PNG.png" alt="Satyamev Jayate" class="logo" id="police-logo">
         </div>
         <div class="header-text">
-            <h1>Gujarat Police</h1>
+            <h1>Gujrat Police</h1>
             <p>Government of Gujarat</p>
         </div>
         <div class="nav-bar">
@@ -1168,17 +1154,14 @@
             </div>
         </form>
     </fieldset>
-    <div class="Footer">
+    <!-- Footer -->
+    <footer class="footer">
 
-        <footer class="footer">
-           
-            <a class="text-white" href="https://automatic-space-couscous-5ww4rrrp9pwc99w-3000.app.github.dev/T&C">Terms & Conditions</a>
-            |
-            © 2020 Copyright:
-            <a class="text-white" href="https://gujaratindia.gov.in/">Government of Gujarat</a>
-            
-        </footer>
-    </div>
+        <a class="text-white" href="https://automatic-space-couscous-5ww4rrrp9pwc99w-3000.app.github.dev/T&C">Terms & Conditions</a>
+        <span> | © 2020 Copyright:</span>
+        <a class="text-white" href="https://gujaratindia.gov.in/">Government of Gujarat</a>
+
+    </footer>
 </body>
 <!-- <script src="/views/feedback.js"></script> -->
 <script>
